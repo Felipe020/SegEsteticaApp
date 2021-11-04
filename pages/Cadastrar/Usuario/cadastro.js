@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Image, Text, TextInput, View, StyleSheet, TouchableOpacity} from 'react-native'
-import CorteDeCabeloImagem from '../../assets/CorteDeCabelo.svg'
+//import CorteDeCabeloImagem from '../../assets/CorteDeCabelo.svg'
 import { StatusBar } from 'expo-status-bar';
 
 export default function TelaCadastro({navigation}) {
@@ -13,15 +13,16 @@ export default function TelaCadastro({navigation}) {
 
   };
 
-  // console.log({CorteDeCabeloImagem})
 
   return (
 
     <View style={styles.container}>
       <StatusBar hidden  />
 
-      {/* <CorteDeCabeloImagem style={{width:200, height:150, margin:20}}/> */}
-
+      <Image style={styles.icone}  
+          source={require('../../../assets/CorteDeCabelo.png')}
+      />  
+      
       <TextInput placeholder="Nome" style={styles.textInput} onChangeText={text=>setNome(text)} />
       <TextInput placeholder="Email" style={styles.textInput} onChangeText={text=>setEmail(text)} />
       <TextInput secureTextEntry={true} placeholder="Senha" style={styles.textInput} onChangeText={text=>setSenha(text)} />
@@ -57,5 +58,10 @@ const styles = StyleSheet.create({
     backgroundColor:'#343434',
     borderRadius:20,
     justifyContent: 'center'
+  },
+  icone:{
+    width:150,
+    height:150,
+    margin:40,
   }
 });

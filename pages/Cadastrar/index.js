@@ -1,1 +1,5 @@
-export {default} from './cadastro'
+import CadastroUsuario from './Usuario'
+
+const Cadastros = {CadastroUsuario}
+
+export default Cadastros

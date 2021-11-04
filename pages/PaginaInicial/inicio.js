@@ -5,13 +5,17 @@ import { StatusBar } from 'expo-status-bar';
 export default function TelaInicial(props){
     
     const {navigation} = props;  
-    const Login = () => {}
-    
-    const Cadastro = () => {
-        navigation.navigate ('Singup');
+    const Login = () => {
+        navigation.navigate ('Login');
     }
     
-    const CadastrarLoja = () => {}
+    const Cadastro = () => {
+        navigation.navigate ('CadastrarUsuario');
+    }
+    
+    const CadastrarLoja = () => {
+        navigation.navigate ('CadastroEstabelecimento');
+    }
 
     return (
 

@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Singup from './pages/Cadastrar';
+import CadastroUsuario from './pages/Cadastrar/Usuario';
 import Initial from './pages/PaginaInicial';
+import Login from './pages/Logar';
+import CadastroEstabelecimento from './pages/Cadastrar/Estabelecimento';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
+ 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
@@ -16,9 +19,17 @@ const MyStack = () => {
           name="Initial"
           component={Initial}
         />
-         <Stack.Screen
-          name="Singup"
-          component={Singup}
+        <Stack.Screen
+          name="CadastrarUsuario"
+          component={CadastroUsuario}
+        /> 
+        <Stack.Screen
+          name="Login"
+          component={Login}
+        />
+        <Stack.Screen
+          name="CadastroEstabelecimento"
+          component={CadastroEstabelecimento}
         />
       </Stack.Navigator>
     </NavigationContainer>
