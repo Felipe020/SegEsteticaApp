@@ -3,7 +3,7 @@ import {Image, Text, TextInput, View, StyleSheet, TouchableOpacity} from 'react-
 import CorteDeCabeloImagem from '../../assets/CorteDeCabelo.svg'
 import { StatusBar } from 'expo-status-bar';
 
-export default function TelaCadastro() {
+export default function TelaCadastro({navigation}) {
   const[nome, setNome] = useState('');
   const[email, setEmail] = useState('');
   const[senha, setSenha] = useState('');
