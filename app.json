@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SegEsteticAaPP",
-    "slug": "SegEsteticAaPP",
+    "name": "SegEsteticaAPP",
+    "slug": "SegEsteticaAPP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
