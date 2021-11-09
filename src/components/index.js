@@ -1,3 +1,3 @@
 export * from './SimpleButton';
-export * from './SimpleForm';
+export * from './SimpleInputList';
 export * from './SimpleTextInput';

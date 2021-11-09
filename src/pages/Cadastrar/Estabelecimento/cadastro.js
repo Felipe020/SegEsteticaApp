@@ -1,56 +1,60 @@
-import React, { useEffect } from 'react';
-import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Image, View, StyleSheet, ScrollView } from 'react-native';
 import { cadastro } from './conexao';
-import { SimpleForm } from 'components';
+import { SimpleInputList, SimpleButton } from 'components';
 import { useFormState } from 'hooks';
 
 export default function TelaCadastro({ navigation }) {
   const [formData, setPropOfForm] = useFormState({});
 
-  useEffect(() => { cadastro(); }, []);
-
   return (
     <View style={styles.container}>
-      <Image style={styles.icone}
-        source={require('assets/CorteDeCabelo.png')}
-      />
+      <ScrollView styles={styles.form} contentContainerStyle={styles.formContainer}>
+        <Image style={styles.icon}
+          source={require('assets/CorteDeCabelo.png')}
+        />
 
-      <SimpleForm
-        formState={formData}
-        setPropOfState={setPropOfForm}
-        attributes={[
-          { name: 'establishmentName', label: 'Nome do Estabelecimento' },
-          { name: 'establishmentEmail', label: 'E-mail do Estabelecimento' },
-        ]}
-      />
+        <SimpleInputList
+          formState={formData}
+          setPropOfState={setPropOfForm}
+          attributes={[
+            { name: 'establishmentName', label: 'Nome do Estabelecimento' },
+            { name: 'establishmentEmail', label: 'E-mail do Estabelecimento' },
+          ]}
+        />
 
-      <TouchableOpacity style={styles.btnCadastro} onPress={() => cadastro()}>
-        <Text style={{ color: 'white', textAlign: 'center' }}>
-          Cadastrar Estabelecimento
-        </Text>
-      </TouchableOpacity>
+        <View style={styles.registerBtn}>
+          <SimpleButton onPress={() => cadastro()} text="Cadastrar Estabelecimento" />
+        </View>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#2E2E2E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20
+    padding: 20,
   },
-  btnCadastro: {
-    width: '50%',
-    height: 40,
-    backgroundColor: '#343434',
-    borderRadius: 20,
-    justifyContent: 'center'
+  form: {
   },
-  icone: {
+  formContainer: {
+    width: '90%',
+    alignSelf: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+  },
+  registerBtn: {
+    marginTop: 25,
+    alignSelf: 'center',
+  },
+  icon: {
     width: 150,
     height: 150,
     margin: 40,
+    marginTop: 100,
+    alignSelf: 'center',
   }
 });

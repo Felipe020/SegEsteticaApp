@@ -1,27 +1,19 @@
 import React from 'react';
 import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SimpleButton } from 'components';
+import LogoImg from 'assets/segestestica_logo_s_subtitulo_transparente.png';
+
 
 export default function TelaInicial(props) {
   const { navigation } = props;
 
-  const entrar = () => {
-    navigation.navigate('Logar');
-  };
-
-  const cadastro = () => {
-    navigation.navigate('CadastrarUsuario');
-  };
-
-  const cadastroEstabelecimento = () => {
-    navigation.navigate('CadastroEstabelecimento');
-  };
+  const entrar = () => navigation.navigate('Logar');
+  const cadastro = () => navigation.navigate('CadastrarUsuario');
+  const cadastroEstabelecimento = () => navigation.navigate('CadastroEstabelecimento');
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo}
-        source={require('assets/segestestica_logo_s_subtitulo_transparente.png')}
-      />
+      <Image style={styles.logo} source={LogoImg} />
 
       <SimpleButton onPress={entrar} text="Entrar" />
       <SimpleButton onPress={cadastro} text="Cadastro" />
