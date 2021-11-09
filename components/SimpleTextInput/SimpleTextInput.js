@@ -6,7 +6,7 @@ export const SimpleTextInput = ({
   key = undefined,
   data = "not implemented",
   label = "not implemented",
-  changeFunction = () => { },
+  changeFunction = (val) => { },
 }) => {
   return (
     <TextInput
@@ -14,7 +14,7 @@ export const SimpleTextInput = ({
       value={data}
       placeholder={label}
       style={styles.textInput}
-      onChangeText={(val) => changeFunction(val)}
+      onChangeText={changeFunction}
     />
   );
 };
