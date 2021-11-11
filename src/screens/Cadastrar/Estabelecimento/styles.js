@@ -18,6 +18,9 @@ export const styles = StyleSheet.create({
   },
   registerBtn: {
     marginTop: 25,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     alignSelf: 'center',
   },
   icon: {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Image, View, StyleSheet, ScrollView } from 'react-native';
+import React from 'react';
+import { Image, View, ScrollView } from 'react-native';
 import { cadastro } from './conexao';
 import { SimpleInputList, SimpleButton } from 'components';
 import { useFetch, useFormState, usePickerData } from 'hooks';
@@ -30,7 +30,7 @@ export default function TelaCadastro({ navigation }) {
         <SimpleInputList
           formState={formData}
           setPropOfState={setPropOfForm}
-          attributes={[
+          fields={[
             { name: 'establishmentName', label: 'Nome do Estabelecimento' },
             { name: 'establishmentEmail', label: 'E-mail do Estabelecimento' },
             {
@@ -55,7 +55,7 @@ export default function TelaCadastro({ navigation }) {
         />
 
         <View style={styles.registerBtn}>
-          <SimpleButton onPress={() => cadastro()} text="Cadastrar Estabelecimento" />
+          <SimpleButton onPress={() => cadastro(formData)} text="Cadastrar Estabelecimento" />
         </View>
       </ScrollView>
     </View>
