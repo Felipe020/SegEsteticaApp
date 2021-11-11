@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { SimpleLabel } from '../SimpleLabel';
 import { SimplePickerInput } from '../SimplePickerInput';
 import { SimpleTextInput } from '../SimpleTextInput';
 import { styles } from './styles';
@@ -7,35 +7,47 @@ import { styles } from './styles';
 export const SimpleInputList = ({
   formState = {},
   setPropOfState = (propName, propValue) => { },
-  attributes = [{
-    name: "exampleAttribute",
+  fields = [{
+    name: "examplefield",
     label: "Example",
     type: "picker",
     options: [{ label: "Example", value: "example" }],
   }]
 }) => {
-  return (
-    <>
-      {attributes.map((attribute, idx) => {
-        if (attribute.type === 'picker') {
-          return <SimplePickerInput
-            key={`${idx}:${attribute.name}`}
-            value={formState[attribute.name] || 0}
-            label={attribute.label}
-            changeFunction={(val) => setPropOfState(attribute.name, val)}
-            style={styles.formItemStyle}
-            options={attribute.options}
-          />;
-        }
+  const getInputByfield = (field, idx) => {
+    const key = `${idx}:${field.name}`;
 
+    switch (field.type) {
+      case 'picker':
+        return <SimplePickerInput
+          key={key}
+          value={formState[field.name] || 0}
+          label={field.label}
+          changeFunction={(val) => setPropOfState(field.name, val)}
+          style={styles.formItemStyle}
+          options={field.options}
+        />;
+      default:
         return <SimpleTextInput
           style={styles.formItemStyle}
-          key={`${idx}:${attribute.name}`}
-          changeFunction={(val) => setPropOfState(attribute.name, val)}
-          label={attribute.label}
-          isSecure={attribute.isSecure}
-          data={formState[attribute.name] || ""}
+          key={key}
+          changeFunction={(val) => setPropOfState(field.name, val)}
+          label={field.label}
+          isSecure={field.isSecure}
+          data={formState[field.name] || ""}
         />;
+    };
+  };
+
+  return (
+    <>
+      {fields.map((field, idx) => {
+        return (
+          <>
+            <SimpleLabel text={field.label + ":"} outsideStyle={styles.formItemLabelStyle} />
+            {getInputByfield(field, idx)}
+          </>
+        );
       })}
     </>
   );

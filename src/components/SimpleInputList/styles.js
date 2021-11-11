@@ -7,4 +7,7 @@ export const styles = StyleSheet.create({
   formItemStyle: {
     marginBottom: 10,
   },
+  formItemLabelStyle: {
+    marginBottom: 10,
+  },
 });
