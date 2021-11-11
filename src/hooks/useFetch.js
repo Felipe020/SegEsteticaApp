@@ -12,7 +12,9 @@ export const useFetch = (url, toJSON = true, maxAttempts = 3, extern = false) =>
     let responseToBeSet = response;
 
     try {
-      const fetchedResponse = await fetch(extern ? url : `${API_URL}/${url}`);
+      const fetchedResponse = await fetch(extern ? url : `${API_URL}/${url}`, {
+        headers: extern ? {} : { 'messages-language': 'pt-BR' }
+      });
 
       if (!toJSON) responseToBeSet = fetchedResponse;
       else responseToBeSet = await fetchedResponse.json();
