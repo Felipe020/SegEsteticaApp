@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, View, StyleSheet, ScrollView } from 'react-native';
 import { cadastro } from './conexao';
 import { SimpleInputList, SimpleButton } from 'components';
-import { useFormState } from 'hooks';
+import { useFetch, useFormState, usePickerData } from 'hooks';
+import { styles } from './styles';
 
 export default function TelaCadastro({ navigation }) {
   const [formData, setPropOfForm] = useFormState({});
+
+  const states = useFetch('states');
+  const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
+
+  const cities = useFetch('cities?cityStateId=' + formData?.establishmentStateId || 0);
+  const cityOptions = usePickerData(cities, { labelAlias: 'name', valueAlias: 'id' });
+
+  const neighborhoods = useFetch('neighborhoods?neighborhoodCityId=' + formData?.establishmentCityId || 0);
+  const neighborhoodOptions = usePickerData(neighborhoods, { labelAlias: 'name', valueAlias: 'id' });
+
+  const streets = useFetch('streets?streetNeighborhoodId=' + formData?.establishmentNeighborhoodId || 0);
+  const streetOptions = usePickerData(streets, { labelAlias: 'name', valueAlias: 'id' });
 
   return (
     <View style={styles.container}>
@@ -20,6 +33,24 @@ export default function TelaCadastro({ navigation }) {
           attributes={[
             { name: 'establishmentName', label: 'Nome do Estabelecimento' },
             { name: 'establishmentEmail', label: 'E-mail do Estabelecimento' },
+            {
+              name: 'establishmentStateId', label: 'Estado do Estabelecimento',
+              type: 'picker', options: stateOptions
+            },
+            {
+              name: 'establishmentCityId', label: 'Cidade do Estabelecimento',
+              type: 'picker', options: cityOptions
+            },
+            {
+              name: 'establishmentNeighborhoodId', label: 'Bairro do Estabelecimento',
+              type: 'picker', options: neighborhoodOptions
+            },
+            {
+              name: 'establishmentStreetId', label: 'Rua do Estabelecimento',
+              type: 'picker', options: streetOptions
+            },
+            { name: 'establishmentAddressNumber', label: 'Número do Endereço' },
+            { name: 'establishmentPassword', label: 'Senha do Estabelecimento', isSecure: true },
           ]}
         />
 
@@ -30,31 +61,3 @@ export default function TelaCadastro({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#2E2E2E',
-    padding: 20,
-  },
-  form: {
-  },
-  formContainer: {
-    width: '90%',
-    alignSelf: 'center',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
-  },
-  registerBtn: {
-    marginTop: 25,
-    alignSelf: 'center',
-  },
-  icon: {
-    width: 150,
-    height: 150,
-    margin: 40,
-    marginTop: 100,
-    alignSelf: 'center',
-  }
-});
