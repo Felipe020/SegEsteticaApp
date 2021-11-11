@@ -6,7 +6,8 @@ export const SimpleTextInput = ({
   data = "not implemented",
   label = "not implemented",
   changeFunction = (val) => { },
-  style = {}
+  style = {},
+  isSecure = false,
 }) => {
   return (
     <View style={style}>
@@ -15,6 +16,7 @@ export const SimpleTextInput = ({
         placeholder={label}
         style={styles.textInput}
         onChangeText={changeFunction}
+        secureTextEntry={isSecure}
       />
     </View>
   );
