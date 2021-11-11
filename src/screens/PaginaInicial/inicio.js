@@ -15,9 +15,9 @@ export default function TelaInicial(props) {
     <View style={styles.container}>
       <Image style={styles.logo} source={LogoImg} />
 
-      <SimpleButton onPress={entrar} text="Entrar" />
-      <SimpleButton onPress={cadastro} text="Cadastro" />
-      <SimpleButton onPress={cadastroEstabelecimento} text="Cadastro de Estabelecimento" />
+      <SimpleButton onPress={entrar} outsideStyle={styles.btnOutside} text="Entrar" />
+      <SimpleButton onPress={cadastro} outsideStyle={styles.btnOutside} text="Cadastro" />
+      <SimpleButton onPress={cadastroEstabelecimento} outsideStyle={styles.btnOutside} text="Cadastro de Estabelecimento" />
     </View>
   );
 }
@@ -29,6 +29,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20
+  },
+  btnOutside: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 20,
   },
   logo: {
     width: 250,
