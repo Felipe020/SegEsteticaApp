@@ -13,7 +13,7 @@ module.exports = function (api) {
           "hooks": './src/hooks',
           "modules": './modules',
           "lib": './lib',
-          "pages": './src/pages',
+          "screens": './src/screens',
           "types": './src/types',
         },
       }],

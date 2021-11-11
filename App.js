@@ -8,7 +8,7 @@ import {
   CadastroUsuario,
   Logar,
   PaginaInicial,
-} from 'pages';
+} from 'screens';
 
 const Stack = createNativeStackNavigator();
 
