@@ -6,6 +6,10 @@ export const useFetch = (url, toJSON = true, maxAttempts = 3, extern = false) =>
   const [attempts, setAttempts] = useState(0);
   const attemptsLimit = maxAttempts;
 
+  useEffect(() => {
+    setAttempts(0);
+  }, [url]);
+
   useEffect(async () => {
     if (attempts >= attemptsLimit) return;
 
