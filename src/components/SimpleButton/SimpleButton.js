@@ -1,14 +1,17 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import { styles } from './styles';
 
 export const SimpleButton = ({
   onPress = () => { },
+  outsideStyle = {},
   text = "not implemented",
 }) => {
   return (
-    <TouchableOpacity style={styles.btnStyle} onPress={onPress}>
-      <Text style={styles.btnTextStyle}>{text}</Text>
-    </TouchableOpacity>
+    <View style={outsideStyle}>
+      <TouchableOpacity style={styles.btnStyle} onPress={onPress}>
+        <Text style={styles.btnTextStyle}>{text}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };

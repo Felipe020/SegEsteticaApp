@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     backgroundColor: '#202020',
     borderRadius: 25,
     justifyContent: 'center',
-    marginBottom: 20,
   },
   btnTextStyle: {
     color: 'white',
