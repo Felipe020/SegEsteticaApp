@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { SimpleLabel } from '../SimpleLabel';
 import { SimplePickerInput } from '../SimplePickerInput';
 import { SimpleTextInput } from '../SimpleTextInput';
@@ -14,13 +14,10 @@ export const SimpleInputList = ({
     options: [{ label: "Example", value: "example" }],
   }]
 }) => {
-  const getInputByfield = (field, idx) => {
-    const key = `${idx}:${field.name}`;
-
+  const getInputByfield = (field) => {
     switch (field.type) {
       case 'picker':
         return <SimplePickerInput
-          key={key}
           value={formState[field.name] || 0}
           label={field.label}
           changeFunction={(val) => setPropOfState(field.name, val)}
@@ -30,7 +27,6 @@ export const SimpleInputList = ({
       default:
         return <SimpleTextInput
           style={styles.formItemStyle}
-          key={key}
           changeFunction={(val) => setPropOfState(field.name, val)}
           label={field.label}
           isSecure={field.isSecure}
@@ -43,10 +39,10 @@ export const SimpleInputList = ({
     <>
       {fields.map((field, idx) => {
         return (
-          <>
+          <Fragment key={`${idx}:${field.name}`}>
             <SimpleLabel text={field.label + ":"} outsideStyle={styles.formItemLabelStyle} />
-            {getInputByfield(field, idx)}
-          </>
+            {getInputByfield(field)}
+          </Fragment>
         );
       })}
     </>
