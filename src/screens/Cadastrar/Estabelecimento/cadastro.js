@@ -54,6 +54,9 @@ export function CadastroEstabelecimento({ navigation }) {
             {
               name: 'streetName', label: 'Rua',
             },
+            {
+              name: 'postCode', label: 'CEP',
+            },
             { name: 'establishmentAddressNumber', label: 'Número do Endereço' },
             { name: 'establishmentPassword', label: 'Senha', isSecure: true },
           ]}
