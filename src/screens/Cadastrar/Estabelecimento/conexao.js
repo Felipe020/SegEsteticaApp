@@ -1,31 +1,29 @@
 import { Alert } from 'react-native';
 import { API_URL } from 'config/consts';
 
-export const cadastro = async (dados) => {
-    let resposta, respostaJSON;
+export const register = async (data) => {
+    let response, jsonResponse;
 
     try {
-        resposta = await fetch(API_URL + '/establishments', {
+        response = await fetch(API_URL + '/establishments', {
             method: 'POST',
-            body: JSON.stringify(dados),
+            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
                 'messages-language': 'pt-BR',
             }
         });
 
-        respostaJSON = await resposta.json();
+        jsonResponse = await response.json();
 
-        Alert.alert("Cadastro efetuado com sucesso!", respostaJSON, [
+        Alert.alert("Cadastro efetuado com sucesso!", jsonResponse, [
             { text: "Ok", style: "cancel" },
         ]);
     } catch (e) {
-        if (!respostaJSON) respostaJSON = await resposta.json();
-
-        Alert.alert("Erro no cadastro!", respostaJSON.errors.join('\n'), [
-            { text: "Ok", style: "cancel" },
-        ]);
-
-        console.info(e);
+        if (jsonResponse) {
+            Alert.alert("Erro no cadastro!", jsonResponse.errors.join('\n'), [
+                { text: "Ok", style: "cancel" },
+            ]);
+        }
     }
 };

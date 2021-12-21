@@ -1,6 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const useFormState = (initialData = {}) => {
+const defaultCanSendAnalyzer = (canOrNot, attribute) => {
+  if (canOrNot) {
+    return !!attribute;
+  }
+
+  return false;
+};
+
+export const useFormState = (initialData = {}, canSendAnalyzer = defaultCanSendAnalyzer) => {
+  const [canSend, setCanSend] = useState(false);
   const [formState, setFormState] = useState(initialData);
 
   const setPropOfState = (propName, propValue) => {
@@ -11,5 +20,13 @@ export const useFormState = (initialData = {}) => {
     setFormState(newData);
   };
 
-  return [formState, setPropOfState];
+  useEffect(() => {
+    const formStateHasData = Object.values(formState).length > 0;
+
+    const newCanSend = formStateHasData ? Object.values(formState).reduce(canSendAnalyzer, true) : false;
+
+    setCanSend(newCanSend);
+  }, [formState]);
+
+  return [formState, setPropOfState, canSend];
 };

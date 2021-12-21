@@ -1,12 +1,12 @@
 import React from 'react';
-import { Image, View, ScrollView } from 'react-native';
-import { cadastro } from './conexao';
+import { Image, View, ScrollView, Alert } from 'react-native';
+import { register } from './conexao';
 import { SimpleInputList, SimpleButton } from 'components';
 import { useFetch, useFormState, usePickerData } from 'hooks';
 import { styles } from './styles';
 
-export default function TelaCadastro({ navigation }) {
-  const [formData, setPropOfForm] = useFormState({});
+export function CadastroEstabelecimento({ navigation }) {
+  const [formData, setPropOfForm, canSend] = useFormState({});
 
   const states = useFetch('states');
   const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
@@ -19,6 +19,13 @@ export default function TelaCadastro({ navigation }) {
 
   const streets = useFetch('streets?streetNeighborhoodId=' + formData?.establishmentNeighborhoodId || 0);
   const streetOptions = usePickerData(streets, { labelAlias: 'name', valueAlias: 'id' });
+
+  const emptyFieldsAlert = () => {
+    Alert.alert("Preencha todos os campos!", "Há campos em branco. Preencha todos para se registrar.", [{
+      style: 'cancel',
+      text: 'Ok!',
+    }]);
+  };
 
   return (
     <View style={styles.container}>
@@ -53,7 +60,7 @@ export default function TelaCadastro({ navigation }) {
         />
 
         <View style={styles.registerBtn}>
-          <SimpleButton onPress={() => cadastro(formData)} text="Cadastrar Estabelecimento" />
+          <SimpleButton onPress={() => canSend ? register(formData) : emptyFieldsAlert()} text="Cadastrar Estabelecimento" />
         </View>
       </ScrollView>
     </View>
