@@ -1,3 +1,2 @@
-import CadastroEstabelecimento from './cadastro';
+export * from './cadastro';
 
-export { CadastroEstabelecimento };
