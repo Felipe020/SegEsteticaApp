@@ -31,26 +31,24 @@ export default function TelaCadastro({ navigation }) {
           formState={formData}
           setPropOfState={setPropOfForm}
           fields={[
-            { name: 'establishmentName', label: 'Nome do Estabelecimento' },
-            { name: 'establishmentEmail', label: 'E-mail do Estabelecimento' },
+            { name: 'establishmentName', label: 'Nome'},
+            { name: 'establishmentEmail', label: 'E-mail' },
             {
-              name: 'establishmentStateId', label: 'Estado do Estabelecimento',
+              name: 'establishmentStateId', label: 'Estado',
               type: 'picker', options: stateOptions
             },
             {
-              name: 'establishmentCityId', label: 'Cidade do Estabelecimento',
+              name: 'establishmentCityId', label: 'Cidade',
               type: 'picker', options: cityOptions
             },
             {
-              name: 'establishmentNeighborhoodId', label: 'Bairro do Estabelecimento',
-              type: 'picker', options: neighborhoodOptions
+              name: 'neighborhoodName', label: 'Bairro',
             },
             {
-              name: 'establishmentStreetId', label: 'Rua do Estabelecimento',
-              type: 'picker', options: streetOptions
+              name: 'streetName', label: 'Rua',
             },
             { name: 'establishmentAddressNumber', label: 'Número do Endereço' },
-            { name: 'establishmentPassword', label: 'Senha do Estabelecimento', isSecure: true },
+            { name: 'establishmentPassword', label: 'Senha', isSecure: true },
           ]}
         />
 
