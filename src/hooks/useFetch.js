@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL, API_BASE_URL } from 'config/consts';
 
 const provideDefaultValuesToOptions = (options) => {
-  const defaultOptions = { useAPIBase: false, toJSON: true, maxAttempts: 3, extern: false };
+  const defaultOptions = { useAPIBase: false, toJSON: true, maxAttempts: 3, extern: false, headers: {} };
 
   return { ...defaultOptions, ...options };
 };
@@ -10,7 +10,7 @@ const provideDefaultValuesToOptions = (options) => {
 export const useFetch = (url, options) => {
   options = provideDefaultValuesToOptions(options);
 
-  const { useAPIBase, toJSON, maxAttempts, extern } = options;
+  const { useAPIBase, toJSON, maxAttempts, extern, headers } = options;
 
   const [response, setResponse] = useState('');
   const [attempts, setAttempts] = useState(0);
@@ -27,8 +27,7 @@ export const useFetch = (url, options) => {
 
     try {
       const fetchedResponse = await fetch(extern ? url : `${useAPIBase ? API_BASE_URL : API_URL}/${url}`, {
-        headers: extern ? {} : { 'messages-language': 'pt-BR' },
-        credentials: 'include',
+        headers: { ...(extern ? {} : { 'messages-language': 'pt-BR' }), ...headers },
       });
 
       if (!toJSON) responseToBeSet = fetchedResponse;
