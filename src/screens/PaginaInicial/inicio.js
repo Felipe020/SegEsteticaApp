@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 import { SimpleButton } from 'components';
 import LogoImg from 'assets/segestestica_logo_s_subtitulo_transparente.png';
 
