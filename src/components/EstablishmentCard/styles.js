@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const EstablishmentContainer = styled.View`
     margin-top: 20px;
     background-color: #343434;
