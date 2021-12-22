@@ -58,8 +58,8 @@ export const Feed = () => {
           </LocationFinder>
         </LocationArea> */}
 
-        {Array.isArray(establishments) ? establishments.map((item) => (
-          <EstablishmentCard establishment={item} />
+        {Array.isArray(establishments) ? establishments.map((item, index) => (
+          <EstablishmentCard establishment={item} key={index} />
         )) : []}
 
       </Scroller>
