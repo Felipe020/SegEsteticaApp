@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
-import establishments from "../../mocks/establishments.json";
+
+import { useFetch } from 'hooks';
+import { EstablishmentCard } from "components";
+
 
 import {
   Container,
@@ -12,9 +15,6 @@ import {
   LocationArea,
   LocationInput,
   LocationFinder,
-  EstablishmentEmail,
-  EstablishmentTitle,
-  EstablishmentContainer,
 } from "./styles";
 
 import SearchIcon from "../../assets/icons8-search-24.png";
@@ -25,27 +25,18 @@ const StyledImage = styled.Image`
   height: 24;
 `;
 
-const BarberCard = ({ establishment }) => {
-  return (
-    <EstablishmentContainer>
-      <EstablishmentTitle>{establishment.name}</EstablishmentTitle>
-      <EstablishmentEmail>{establishment.email}</EstablishmentEmail>
-    </EstablishmentContainer>
-  );
-};
-
-
-
 export const Feed = () => {
   const navigation = useNavigation();
 
   const [locationText, setLocationText] = useState("");
   const [list, setList] = useState([]);
 
+  const establishments = useFetch('establishments');
+
   return (
     <Container>
       <Scroller>
-        
+
         <HeaderArea>
           <HeaderTitle numberOfLines={2} margin-top="40">
             Encontre seu lugar de beleza favorito
@@ -68,7 +59,7 @@ export const Feed = () => {
         </LocationArea> */}
 
         {establishments.map((item) => (
-          <BarberCard establishment={item}/>
+          <EstablishmentCard establishment={item} />
         ))}
 
       </Scroller>
