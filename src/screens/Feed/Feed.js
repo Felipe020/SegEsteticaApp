@@ -58,9 +58,9 @@ export const Feed = () => {
           </LocationFinder>
         </LocationArea> */}
 
-        {establishments.map((item) => (
+        {Array.isArray(establishments) ? establishments.map((item) => (
           <EstablishmentCard establishment={item} />
-        ))}
+        )) : []}
 
       </Scroller>
     </Container>
