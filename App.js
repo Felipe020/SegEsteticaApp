@@ -6,26 +6,27 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   CadastroEstabelecimento,
   CadastroUsuario,
-  Feed,
   Logar,
   PaginaInicial,
 } from "screens";
+
+import MainTab from "stacks/MainTab";
 
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="FeedEstabelecimentos" component={Feed} />
+      {/* <Stack.Navigator >
         <Stack.Screen name="PaginaInicial" component={PaginaInicial} />
         <Stack.Screen name="CadastrarUsuario" component={CadastroUsuario} />
         <Stack.Screen name="Logar" component={Logar} />
         <Stack.Screen
           name="CadastroEstabelecimento"
           component={CadastroEstabelecimento}
-        />
-      </Stack.Navigator>
+        /> 
+      </Stack.Navigator> */}
+      <MainTab/>
     </NavigationContainer>
   );
 };
