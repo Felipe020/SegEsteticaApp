@@ -15,7 +15,8 @@ module.exports = function (api) {
           "lib": './lib',
           "screens": './src/screens',
           "types": './src/types',
-          "stacks": './src/stacks'
+          "stacks": './src/stacks',
+          "mocks": './src/mocks'
         },
       }],
     ],
