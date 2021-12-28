@@ -16,28 +16,24 @@ import { SegEsteticaGlobalContext } from "./src/contexts/SegEsteticaGlobalContex
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
-  return (
-    <NavigationContainer>
-      {/* <Stack.Navigator >
-        <Stack.Screen name="PaginaInicial" component={PaginaInicial} />
-        <Stack.Screen name="CadastrarUsuario" component={CadastroUsuario} />
-        <Stack.Screen name="Logar" component={Logar} />
-        <Stack.Screen
-          name="CadastroEstabelecimento"
-          component={CadastroEstabelecimento}
-        /> 
-      </Stack.Navigator> */}
-      <MainTab/>
-    </NavigationContainer>
-  );
+  return <MainTab />;
 };
 
 export default function App() {
   return (
     <SegEsteticaGlobalContext>
-      <MyStack />
+      <NavigationContainer >
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="PaginaInicial" component={PaginaInicial} />
+          <Stack.Screen name="CadastrarUsuario" component={CadastroUsuario} />
+          <Stack.Screen name="Logar" component={Logar} />
+          <Stack.Screen
+            name="CadastroEstabelecimento"
+            component={CadastroEstabelecimento}
+          />
+          <Stack.Screen name="Principal" component={MyStack} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SegEsteticaGlobalContext>
   );
 }
-
-
