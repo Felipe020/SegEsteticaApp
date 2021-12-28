@@ -11,6 +11,7 @@ import {
 } from "screens";
 
 import MainTab from "stacks/MainTab";
+import { SegEsteticaGlobalContext } from "./src/contexts/SegEsteticaGlobalContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,5 +33,11 @@ const MyStack = () => {
 };
 
 export default function App() {
-  return <MyStack />;
+  return (
+    <SegEsteticaGlobalContext>
+      <MyStack />
+    </SegEsteticaGlobalContext>
+  );
 }
+
+
