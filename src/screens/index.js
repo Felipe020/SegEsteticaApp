@@ -1,15 +1,8 @@
-import Logar from './Logar';
-import PaginaInicial from './PaginaInicial';
-import {
-  CadastroEstabelecimento,
-  CadastroUsuario,
-} from './Cadastrar';
-import { Feed } from './Feed';
-
-export {
-  CadastroEstabelecimento,
-  CadastroUsuario,
-  Feed,
-  Logar,
-  PaginaInicial, 
-};
+export * from './Appointments';
+export * from './Cadastrar';
+export * from './Favoritos';
+export * from './Feed';
+export * from './Login';
+export * from './PaginaInicial';
+export * from './Profile';
+export * from './Search';

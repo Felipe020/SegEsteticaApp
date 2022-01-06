@@ -5,7 +5,7 @@ import { SimpleInputList, SimpleButton } from 'components';
 import { useFetch, useFormState, usePickerData } from 'hooks';
 import { styles } from './styles';
 
-export function CadastroEstabelecimento({ navigation }) {
+export const CadastroEstabelecimento = ({ navigation }) => {
   const [formData, setPropOfForm, canSend] = useFormState({});
 
   const states = useFetch('states');
@@ -38,7 +38,7 @@ export function CadastroEstabelecimento({ navigation }) {
           formState={formData}
           setPropOfState={setPropOfForm}
           fields={[
-            { name: 'establishmentName', label: 'Nome'},
+            { name: 'establishmentName', label: 'Nome' },
             { name: 'establishmentEmail', label: 'E-mail' },
             {
               name: 'establishmentStateId', label: 'Estado',
@@ -68,4 +68,4 @@ export function CadastroEstabelecimento({ navigation }) {
       </ScrollView>
     </View>
   );
-}
+};

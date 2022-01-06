@@ -17,8 +17,8 @@ import {
   LocationFinder,
 } from "./styles";
 
-import SearchIcon from "../../assets/icons8-search-24.png";
-import MyLocationIcon from "../../assets/icons8-my-location-24.png";
+import SearchIcon from "assets/icons8-search-24.png";
+import MyLocationIcon from "assets/icons8-my-location-24.png";
 
 const StyledImage = styled.Image`
   width: 24;
