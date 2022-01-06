@@ -9,14 +9,19 @@ module.exports = function (api) {
           "assets": './src/assets',
           "components": './src/components',
           "config": './src/config',
-          "constants": './src/constants',
+          "contexts": './src/contexts',
+          // We don't have constants folder
+          // "constants": './src/constants',
+          // We don't have modules folder
+          // "modules": './modules',
+          // We aren't using lib folder structure
+          // "lib": './lib',
           "hooks": './src/hooks',
-          "modules": './modules',
-          "lib": './lib',
+          "mocks": './src/mocks',
           "screens": './src/screens',
-          "types": './src/types',
           "stacks": './src/stacks',
-          "mocks": './src/mocks'
+          // We aren't using typescript
+          // "types": './src/types',
         },
       }],
     ],
