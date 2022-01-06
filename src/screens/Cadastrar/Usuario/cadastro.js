@@ -1,74 +1,75 @@
-import React, { useState } from 'react';
-import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { useFormState } from '@hooks';
+import React from 'react';
+
 import { SimpleInputList } from '@components';
+
+import {
+  useFetch,
+  useFormState,
+  usePickerData,
+} from '@hooks';
+
+import {
+  Container,
+  RegisterButton,
+  ScreenIcon,
+  Scroller,
+} from './styles';
 
 export const CadastroUsuario = ({ navigation }) => {
   const [loginFormState, setPropOfLoginFormState] = useFormState();
 
-  const cadastro = () => {
+  const states = useFetch('states');
+  const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
 
-  };
+  const cities = useFetch('cities?cityStateId=' + loginFormState?.userStateId || 0);
+  const cityOptions = usePickerData(cities, { labelAlias: 'name', valueAlias: 'id' });
+
+  const neighborhoods = useFetch('neighborhoods?neighborhoodCityId=' + loginFormState?.userCityId || 0);
+  const neighborhoodOptions = usePickerData(neighborhoods, { labelAlias: 'name', valueAlias: 'id' });
+
 
 
   return (
+    <Container>
+      <Scroller>
+        <ScreenIcon source={require('@assets/CorteDeCabelo.png')} />
 
-    <View style={styles.container}>
-      <StatusBar hidden />
+        <SimpleInputList
+          formState={loginFormState}
+          setPropOfState={setPropOfLoginFormState}
+          fields={[
+            { name: "userName", label: "Nome" },
+            { name: "userLastName", label: "Sobrenome" },
+            { name: "userEmail", label: "E-mail" },
+            { name: "userPassword", label: "Senha" },
+            { name: "userPasswordConfirmation", label: "Confirme a Senha" },
+            { name: "userPhoneNumber", label: "Número de telefone" },
+            {
+              name: "userStateId",
+              label: "Selecione um estado",
+              type: "picker",
+              options: stateOptions
+            },
+            {
+              name: "userCityId",
+              label: "Selecione uma cidade",
+              type: "picker",
+              options: cityOptions
+            },
+            {
+              name: "userNeighborhoodId",
+              label: "Selecione um bairro",
+              type: "picker",
+              options: neighborhoodOptions
+            },
+          ]}
 
-      <Image style={styles.icone}
-        source={require('@assets/CorteDeCabelo.png')}
-      />
+        />
 
-      <SimpleInputList
-        formState={loginFormState}
-        setPropOfState={setPropOfLoginFormState}
-        fields={[
-          { name: "userName", label: "Nome" }
-
-        ]}
-
-      />
-      <TextInput placeholder="Nome" style={styles.textInput} onChangeText={text => setNome(text)} />
-      <TextInput placeholder="Email" style={styles.textInput} onChangeText={text => setEmail(text)} />
-      <TextInput secureTextEntry={true} placeholder="Senha" style={styles.textInput} onChangeText={text => setSenha(text)} />
-      <TextInput placeholder="CEP" style={styles.textInput} onChangeText={text => setCEP(text)} />
-
-      <TouchableOpacity style={styles.btnCadastro} onPress={() => cadastro()}>
-        <Text style={{ color: 'white', textAlign: 'center' }}>Cadastrar</Text>
-      </TouchableOpacity>
-
-    </View>
+        <RegisterButton
+          text="Cadastrar"
+        />
+      </Scroller>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2E2E2E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20
-  },
-  textInput: {
-    width: '100%',
-    height: 40,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    paddingLeft: 10,
-    marginBottom: 10
-  },
-  btnCadastro: {
-    width: '50%',
-    height: 40,
-    backgroundColor: '#343434',
-    borderRadius: 20,
-    justifyContent: 'center'
-  },
-  icone: {
-    width: 150,
-    height: 150,
-    margin: 40,
-  }
-});
