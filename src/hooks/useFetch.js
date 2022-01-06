@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { API_URL, API_BASE_URL } from 'config/consts';
+import { API_URL, API_BASE_URL } from '@config/consts';
 
 const provideDefaultValuesToOptions = (options) => {
   const defaultOptions = { useAPIBase: false, toJSON: true, maxAttempts: 3, extern: false, headers: {} };

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { useFormState } from 'hooks';
-import { SimpleInputList } from 'components';
-
+import { useFormState } from '@hooks';
+import { SimpleInputList } from '@components';
 
 export const CadastroUsuario = ({ navigation }) => {
   const [loginFormState, setPropOfLoginFormState] = useFormState();
@@ -19,7 +18,7 @@ export const CadastroUsuario = ({ navigation }) => {
       <StatusBar hidden />
 
       <Image style={styles.icone}
-        source={require('assets/CorteDeCabelo.png')}
+        source={require('@assets/CorteDeCabelo.png')}
       />
 
       <SimpleInputList

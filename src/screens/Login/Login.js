@@ -5,10 +5,9 @@ import {
   TextInput,
   View,
   StyleSheet,
-  TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SimpleButton } from "components";
+import { SimpleButton } from "@components";
 
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -21,7 +20,7 @@ export const Login = ({ navigation }) => {
 
       <Image
         style={styles.icone}
-        source={require("assets/UserIcon.png")}
+        source={require("@assets/UserIcon.png")}
       />
 
       <TextInput

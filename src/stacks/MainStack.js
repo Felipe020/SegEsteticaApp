@@ -6,7 +6,7 @@ import {
 	CadastroUsuario,
 	Login,
 	PaginaInicial,
-} from "screens";
+} from "@screens";
 
 import { TabStack } from "./TabStack";
 

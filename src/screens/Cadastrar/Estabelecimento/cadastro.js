@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, View, ScrollView, Alert } from 'react-native';
 import { register } from './conexao';
-import { SimpleInputList, SimpleButton } from 'components';
-import { useFetch, useFormState, usePickerData } from 'hooks';
+import { SimpleInputList, SimpleButton } from '@components';
+import { useFetch, useFormState, usePickerData } from '@hooks';
 import { styles } from './styles';
 
 export const CadastroEstabelecimento = ({ navigation }) => {
@@ -31,7 +31,7 @@ export const CadastroEstabelecimento = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView styles={styles.form} contentContainerStyle={styles.formContainer}>
         <Image style={styles.icon}
-          source={require('assets/CorteDeCabelo.png')}
+          source={require('@assets/CorteDeCabelo.png')}
         />
 
         <SimpleInputList

@@ -6,22 +6,21 @@ module.exports = function (api) {
       ['module-resolver', {
         root: ['./'],
         alias: {
-          "assets": './src/assets',
-          "components": './src/components',
-          "config": './src/config',
-          "contexts": './src/contexts',
+          "@assets": './src/assets',
+          "@components": './src/components',
+          "@config": './src/config',
+          "@contexts": './src/contexts',
           // We don't have constants folder
           // "constants": './src/constants',
           // We don't have modules folder
           // "modules": './modules',
           // We aren't using lib folder structure
           // "lib": './lib',
-          "hooks": './src/hooks',
-          "mocks": './src/mocks',
-          "screens": './src/screens',
-          "stacks": './src/stacks',
-          // We aren't using typescript
-          // "types": './src/types',
+          "@hooks": './src/hooks',
+          "@mocks": './src/mocks',
+          "@screens": './src/screens',
+          "@stacks": './src/stacks',
+          "@types": './src/types',
         },
       }],
     ],

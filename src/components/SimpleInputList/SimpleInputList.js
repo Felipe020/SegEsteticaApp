@@ -6,7 +6,7 @@ import { styles } from "./styles";
 
 export const SimpleInputList = ({
   formState = {},
-  setPropOfState = (propName, propValue) => {},
+  setPropOfState = (propName, propValue) => { },
   fields = [
     {
       name: "examplefield",
@@ -16,7 +16,7 @@ export const SimpleInputList = ({
     },
   ],
 }) => {
-  const getInputByfield = (field, idx) => {
+  const getInputByfield = (field) => {
     switch (field.type) {
       case "picker":
         return (

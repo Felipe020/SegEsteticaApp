@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { CustomTabBar } from 'components';
+import { CustomTabBar } from '@components';
 
 import {
     Appointments,
@@ -9,7 +9,7 @@ import {
     Feed,
     Profile,
     Search
-} from 'screens';
+} from '@screens';
 
 const Tab = createBottomTabNavigator();
 
