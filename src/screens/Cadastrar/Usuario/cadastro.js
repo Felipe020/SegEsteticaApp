@@ -2,14 +2,17 @@ import React, {useState} from 'react'
 import {Image, Text, TextInput, View, StyleSheet, TouchableOpacity} from 'react-native'
 //import CorteDeCabeloImagem from '../../assets/CorteDeCabelo.svg'
 import { StatusBar } from 'expo-status-bar';
+import {useFormState} from 'hooks';
+import {SimpleInputList} from 'components';
+
 
 export default function TelaCadastro({navigation}) {
-  const[nome, setNome] = useState('');
-  const[email, setEmail] = useState('');
-  const[senha, setSenha] = useState('');
-  const[cep, setCEP] = useState('');
+  
+  const [loginFormState, setPropOfLoginFormState] = useFormState();
 
   const cadastro = () => {
+
+    
 
   };
 
@@ -22,7 +25,16 @@ export default function TelaCadastro({navigation}) {
       <Image style={styles.icone}  
           source={require('../../../assets/CorteDeCabelo.png')}
       />  
+
+      <SimpleInputList 
+        formState={loginFormState}
+        setPropOfState={setPropOfLoginFormState}
+        fields={[
+          {name: "userName", label: "Nome"}
+          
+        ]}
       
+      />      
       <TextInput placeholder="Nome" style={styles.textInput} onChangeText={text=>setNome(text)} />
       <TextInput placeholder="Email" style={styles.textInput} onChangeText={text=>setEmail(text)} />
       <TextInput secureTextEntry={true} placeholder="Senha" style={styles.textInput} onChangeText={text=>setSenha(text)} />
