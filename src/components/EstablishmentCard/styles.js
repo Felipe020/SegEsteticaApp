@@ -12,7 +12,7 @@ export const EstablishmentContainer = styled.View`
     justify-content: center;
 `;
 
-export const EstablishmentEmail = styled.Text`
+export const EstablishmentAddress = styled.Text`
     color: #FFF;
 `;
 

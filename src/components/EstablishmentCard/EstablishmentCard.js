@@ -2,16 +2,18 @@ import React from "react";
 
 import {
   EstablishmentContainer,
-  EstablishmentEmail,
+  EstablishmentAddress,
   EstablishmentTitle,
   SeeProfileBtn,
 } from "./styles";
+
+import {addressAdapter} from "@utils";
 
 export const EstablishmentCard = ({ establishment }) => {
   return (
     <EstablishmentContainer>
       <EstablishmentTitle>{establishment.name}</EstablishmentTitle>
-      <EstablishmentEmail>{establishment.email}</EstablishmentEmail>
+      <EstablishmentAddress>{addressAdapter(establishment.address, establishment.addressNumber)}</EstablishmentAddress>
       {/* //<SeeProfileBtn></SeeProfileBtn> */}
     </EstablishmentContainer>
   );
