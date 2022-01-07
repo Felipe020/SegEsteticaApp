@@ -17,7 +17,7 @@ export const PaginaInicial = (props) => {
       <Image style={styles.logo} source={LogoImg} />
 
       <SimpleButton onPress={entrar} outsideStyle={styles.btnOutside} text="Entrar" />
-      <SimpleButton onPress={cadastro} outsideStyle={styles.btnOutside} text="Cadastro" />
+      <SimpleButton onPress={cadastro} outsideStyle={styles.btnOutside} text="Cadastro de usuário" />
       <SimpleButton onPress={cadastroEstabelecimento} outsideStyle={styles.btnOutside} text="Cadastro de Estabelecimento" />
     </View>
   );
