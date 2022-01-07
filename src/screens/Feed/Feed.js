@@ -12,9 +12,6 @@ import {
   HeaderArea,
   HeaderTitle,
   SearchButton,
-  LocationArea,
-  LocationInput,
-  LocationFinder,
 } from "./styles";
 
 import SearchIcon from "@assets/icons8-search-24.png";
@@ -27,9 +24,6 @@ const StyledImage = styled.Image`
 
 export const Feed = () => {
   const navigation = useNavigation();
-
-  const [locationText, setLocationText] = useState("");
-  const [list, setList] = useState([]);
 
   const establishments = useFetch('establishments');
 
@@ -45,18 +39,6 @@ export const Feed = () => {
             <StyledImage source={SearchIcon} />
           </SearchButton>
         </HeaderArea>
-
-        {/* <LocationArea>
-          <LocationInput 
-            placeholder="Qual a sua cidade?"
-            placeholderTextoColor="#955e25"
-            value={locationText}
-            onchangeText={t=>setLocationText(t)}
-          />
-          <LocationFinder>
-            <StyledImage source={MyLocationIcon}/>
-          </LocationFinder>
-        </LocationArea> */}
 
         {Array.isArray(establishments) ? establishments.map((item, index) => (
           <EstablishmentCard establishment={item} key={index} />
