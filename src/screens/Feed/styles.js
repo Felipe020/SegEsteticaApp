@@ -6,6 +6,7 @@ export const Container = styled.SafeAreaView`
     background-color: #2E2E2E;
     padding-top: 30px;
     height: 100%;
+    color: #FFFF;
 `;
 
 export const Scroller = styled.ScrollView`
