@@ -5,23 +5,22 @@ import {
   TextInput,
   View,
   StyleSheet,
-  TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SimpleButton } from "components";
+import { SimpleButton } from "@components";
 
-export default function TelaLogin({ navigation }) {
+export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const logar = () => {navigation.navigate("Principal")};
+  const logar = () => { navigation.navigate("Principal"); };
   return (
     <View style={styles.container}>
       <StatusBar hidden />
 
       <Image
         style={styles.icone}
-        source={require("../../assets/UserIcon.png")}
+        source={require("@assets/UserIcon.png")}
       />
 
       <TextInput
@@ -38,7 +37,7 @@ export default function TelaLogin({ navigation }) {
       <SimpleButton text="Fazer login" onPress={logar} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

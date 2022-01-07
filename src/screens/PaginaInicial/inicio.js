@@ -1,13 +1,14 @@
 import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
-import { SimpleButton } from 'components';
-import LogoImg from 'assets/segestestica_logo_s_subtitulo_transparente.png';
 
+import { SimpleButton } from '@components';
 
-export default function TelaInicial(props) {
+import LogoImg from '@assets/segestestica_logo_s_subtitulo_transparente.png';
+
+export const PaginaInicial = (props) => {
   const { navigation } = props;
 
-  const entrar = () => navigation.navigate('Logar');
+  const entrar = () => navigation.navigate('Login');
   const cadastro = () => navigation.navigate('CadastrarUsuario');
   const cadastroEstabelecimento = () => navigation.navigate('CadastroEstabelecimento');
 
@@ -20,7 +21,7 @@ export default function TelaInicial(props) {
       <SimpleButton onPress={cadastroEstabelecimento} outsideStyle={styles.btnOutside} text="Cadastro de Estabelecimento" />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

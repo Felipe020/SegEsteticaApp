@@ -1,11 +1,11 @@
 import React from 'react';
 import { Image, View, ScrollView, Alert } from 'react-native';
 import { register } from './conexao';
-import { SimpleInputList, SimpleButton } from 'components';
-import { useFetch, useFormState, usePickerData } from 'hooks';
+import { SimpleInputList, SimpleButton } from '@components';
+import { useFetch, useFormState, usePickerData } from '@hooks';
 import { styles } from './styles';
 
-export function CadastroEstabelecimento({ navigation }) {
+export const CadastroEstabelecimento = ({ navigation }) => {
   const [formData, setPropOfForm, canSend] = useFormState({});
 
   const states = useFetch('states');
@@ -13,12 +13,6 @@ export function CadastroEstabelecimento({ navigation }) {
 
   const cities = useFetch('cities?cityStateId=' + formData?.establishmentStateId || 0);
   const cityOptions = usePickerData(cities, { labelAlias: 'name', valueAlias: 'id' });
-
-  const neighborhoods = useFetch('neighborhoods?neighborhoodCityId=' + formData?.establishmentCityId || 0);
-  const neighborhoodOptions = usePickerData(neighborhoods, { labelAlias: 'name', valueAlias: 'id' });
-
-  const streets = useFetch('streets?streetNeighborhoodId=' + formData?.establishmentNeighborhoodId || 0);
-  const streetOptions = usePickerData(streets, { labelAlias: 'name', valueAlias: 'id' });
 
   const emptyFieldsAlert = () => {
     Alert.alert("Preencha todos os campos!", "Há campos em branco. Preencha todos para se registrar.", [{
@@ -31,14 +25,14 @@ export function CadastroEstabelecimento({ navigation }) {
     <View style={styles.container}>
       <ScrollView styles={styles.form} contentContainerStyle={styles.formContainer}>
         <Image style={styles.icon}
-          source={require('assets/CorteDeCabelo.png')}
+          source={require('@assets/CorteDeCabelo.png')}
         />
 
         <SimpleInputList
           formState={formData}
           setPropOfState={setPropOfForm}
           fields={[
-            { name: 'establishmentName', label: 'Nome'},
+            { name: 'establishmentName', label: 'Nome' },
             { name: 'establishmentEmail', label: 'E-mail' },
             {
               name: 'establishmentStateId', label: 'Estado',
@@ -68,4 +62,4 @@ export function CadastroEstabelecimento({ navigation }) {
       </ScrollView>
     </View>
   );
-}
+};
