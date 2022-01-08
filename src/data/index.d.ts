@@ -1,1 +1,1 @@
-export * from './Establishment';
+export * from './Models';
