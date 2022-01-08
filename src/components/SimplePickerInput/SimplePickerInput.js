@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+
 import { styles } from './styles';
 
 export const SimplePickerInput = ({
