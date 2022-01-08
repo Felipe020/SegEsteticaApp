@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
-import { SimpleButton } from '@components';
+import { SimpleButton } from '@seg-estetica/components';
 
 export const Container = ({ children }) => {
 	return (

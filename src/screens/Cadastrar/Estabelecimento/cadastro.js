@@ -1,9 +1,12 @@
 import React from 'react';
 import { Image, View, ScrollView, Alert } from 'react-native';
-import { register } from './conexao';
-import { SimpleInputList, SimpleButton } from '@components';
-import { useFetch, useFormState, usePickerData } from '@hooks';
+
+import { SimpleInputList, SimpleButton } from '@seg-estetica/components';
+import { useFetch, useFormState, usePickerData } from '@seg-estetica/hooks';
+
 import { styles } from './styles';
+
+import { register } from './conexao';
 
 export const CadastroEstabelecimento = ({ navigation }) => {
   const [formData, setPropOfForm, canSend] = useFormState({});
@@ -25,7 +28,7 @@ export const CadastroEstabelecimento = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView styles={styles.form} contentContainerStyle={styles.formContainer}>
         <Image style={styles.icon}
-          source={require('@assets/CorteDeCabelo.png')}
+          source={require('@seg-estetica/assets/CorteDeCabelo.png')}
         />
 
         <SimpleInputList

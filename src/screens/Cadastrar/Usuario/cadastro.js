@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { SimpleInputList } from '@components';
+import { SimpleInputList } from '@seg-estetica/components';
 
 import {
   useFetch,
   useFormState,
   usePickerData,
-} from '@hooks';
+} from '@seg-estetica/hooks';
 
 import {
   Container,
@@ -14,6 +14,8 @@ import {
   ScreenIcon,
   Scroller,
 } from './styles';
+
+import CorteDeCabeloPng from '@seg-estetica/assets/CorteDeCabelo.png';
 
 export const CadastroUsuario = ({ navigation }) => {
   const [loginFormState, setPropOfLoginFormState] = useFormState();
@@ -27,12 +29,10 @@ export const CadastroUsuario = ({ navigation }) => {
   const neighborhoods = useFetch('neighborhoods?neighborhoodCityId=' + loginFormState?.userCityId || 0);
   const neighborhoodOptions = usePickerData(neighborhoods, { labelAlias: 'name', valueAlias: 'id' });
 
-
-
   return (
     <Container>
       <Scroller>
-        <ScreenIcon source={require('@assets/CorteDeCabelo.png')} />
+        <ScreenIcon source={CorteDeCabeloPng} />
 
         <SimpleInputList
           formState={loginFormState}

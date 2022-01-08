@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { CustomTabBar } from '@components';
+import { CustomTabBar } from '@seg-estetica/components';
 
 import {
     Appointments,
@@ -9,7 +9,7 @@ import {
     Feed,
     Profile,
     Search
-} from '@screens';
+} from '@seg-estetica/screens';
 
 const Tab = createBottomTabNavigator();
 

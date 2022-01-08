@@ -2,8 +2,8 @@ import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
 
-import { useFetch } from '@hooks';
-import { EstablishmentCard } from "@components";
+import { useFetch } from '@seg-estetica/hooks';
+import { EstablishmentCard } from "@seg-estetica/components";
 
 
 import {
@@ -17,8 +17,8 @@ import {
   LocationFinder,
 } from "./styles";
 
-import SearchIcon from "@assets/icons8-search-24.png";
-import MyLocationIcon from "@assets/icons8-my-location-24.png";
+import SearchIcon from "@seg-estetica/assets/icons8-search-24.png";
+import MyLocationIcon from "@seg-estetica/assets/icons8-my-location-24.png";
 
 const StyledImage = styled.Image`
   width: 24;

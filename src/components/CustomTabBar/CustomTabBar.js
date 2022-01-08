@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import HomeIcon from '@assets/icons8-home-24.png';
-import SearchIcon from '@assets/icons8-search-24.png';
-import TodayIcon from '@assets/icons8-today-48.png';
-import FavoriteIcon from '@assets/icons8-favorite-24.png';
-import AccountIcon from '@assets/icons8-account-30.png';
+import HomeIcon from '@seg-estetica/assets/icons8-home-24.png';
+import SearchIcon from '@seg-estetica/assets/icons8-search-24.png';
+import TodayIcon from '@seg-estetica/assets/icons8-today-48.png';
+import FavoriteIcon from '@seg-estetica/assets/icons8-favorite-24.png';
+import AccountIcon from '@seg-estetica/assets/icons8-account-30.png';
 
 const TabArea = styled.View`
     height: 60px;

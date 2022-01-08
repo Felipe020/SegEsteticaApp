@@ -6,7 +6,7 @@ import {
 	CadastroUsuario,
 	Login,
 	PaginaInicial,
-} from "@screens";
+} from "@seg-estetica/screens";
 
 import { TabStack } from "./TabStack";
 

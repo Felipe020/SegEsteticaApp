@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"module": "ES2020",
+		"baseUrl": ".",
+		"paths": {
+			"@seg-estetica/*": [
+				"./src/*/index.d.ts",
+				"./src/*/index.js",
+				"./src/*"
+			],
+		}
+	},
+	"exclude": [
+		"node_modules",
+		".expo",
+		".expo-shared"
+	]
+}

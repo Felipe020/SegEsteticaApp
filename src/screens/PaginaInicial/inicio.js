@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 
-import { SimpleButton } from '@components';
+import { SimpleButton } from '@seg-estetica/components';
 
-import LogoImg from '@assets/segestestica_logo_s_subtitulo_transparente.png';
+import LogoImg from '@seg-estetica/assets/segestestica_logo_s_subtitulo_transparente.png';
 
 export const PaginaInicial = (props) => {
   const { navigation } = props;

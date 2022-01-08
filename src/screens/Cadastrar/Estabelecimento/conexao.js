@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { API_URL } from "@config/consts";
+import { API_URL } from "@seg-estetica/config/consts";
 
 export const register = async (data) => {
   let response, jsonResponse;

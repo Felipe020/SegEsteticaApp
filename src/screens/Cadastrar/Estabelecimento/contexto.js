@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useCookies } from '@hooks';
+import { useCookies } from '@seg-estetica/hooks';
 
 const EstablishmentRegisterContext = createContext();
 

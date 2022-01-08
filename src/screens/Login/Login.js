@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SimpleButton } from "@components";
+import { SimpleButton } from "@seg-estetica/components";
 
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ export const Login = ({ navigation }) => {
 
       <Image
         style={styles.icone}
-        source={require("@assets/UserIcon.png")}
+        source={require("@seg-estetica/assets/UserIcon.png")}
       />
 
       <TextInput

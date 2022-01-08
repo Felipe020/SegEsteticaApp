@@ -2,8 +2,8 @@ import React from "react";
 import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { SegEsteticaGlobalContext } from "@contexts";
-import { MainStack } from '@stacks';
+import { SegEsteticaGlobalContext } from "@seg-estetica/contexts";
+import { MainStack } from '@seg-estetica/stacks';
 
 export default function App() {
   return (
