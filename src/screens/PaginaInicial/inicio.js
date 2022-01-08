@@ -8,17 +8,30 @@ import LogoImg from '@seg-estetica/assets/segestestica_logo_s_subtitulo_transpar
 export const PaginaInicial = (props) => {
   const { navigation } = props;
 
-  const entrar = () => navigation.navigate('Login');
-  const cadastro = () => navigation.navigate('CadastrarUsuario');
-  const cadastroEstabelecimento = () => navigation.navigate('CadastroEstabelecimento');
+  const goTo = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
+  const entrar = () => goTo('Login');
+  const cadastro = () => goTo('CadastrarUsuario');
+  const cadastroEstabelecimento = () => goTo('CadastroEstabelecimento');
 
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={LogoImg} />
 
-      <SimpleButton onPress={entrar} outsideStyle={styles.btnOutside} text="Entrar" />
-      <SimpleButton onPress={cadastro} outsideStyle={styles.btnOutside} text="Cadastro de usuário" />
-      <SimpleButton onPress={cadastroEstabelecimento} outsideStyle={styles.btnOutside} text="Cadastro de Estabelecimento" />
+      <SimpleButton
+        onPress={entrar}
+        outsideStyle={styles.btnOutside}
+        text="Entrar" />
+      <SimpleButton
+        onPress={cadastro}
+        outsideStyle={styles.btnOutside}
+        text="Cadastro de Usuário" />
+      <SimpleButton
+        onPress={cadastroEstabelecimento}
+        outsideStyle={styles.btnOutside}
+        text="Cadastro de Estabelecimento" />
     </View>
   );
 };
