@@ -1,5 +1,6 @@
-import { Bool } from 'node_modules/reselect/es/types';
 import React from 'react';
+
+import { CheckBoxOption, PickerOption } from '@seg-estetica/data';
 
 export type FetchOptions = {
 	useAPIBase: Bool,
@@ -17,9 +18,12 @@ export const useFormState = (initialData: Object, formValidator: (formState: Obj
 	validated: Bool
 ] => { };
 
-export type PickerDataMold = {
+export const usePickerData = (data: Object[], mold: {
 	valueAlias: String,
 	labelAlias: String
-};
+}): PickerOption[] => { };
 
-export const usePickerData = (data: any[], mold: PickerDataMold): PickerOption[] => { };
+export const useCheckBoxData = (data: Object[], mold: {
+	valueAlias: String,
+	labelAlias: String
+}): [checkBoxData: CheckBoxOption[], setCheckBoxData: Function] => { };
