@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
-		"module": "ES2020",
+		"allowJs": true,
 		"baseUrl": ".",
 		"paths": {
 			"@seg-estetica/*": [
 				"./src/*/index.d.ts",
 				"./src/*/index.js",
 				"./src/*"
-			],
+			]
 		}
 	},
 	"exclude": [
