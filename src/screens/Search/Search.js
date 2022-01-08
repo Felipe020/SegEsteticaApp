@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Text } from "react-native";
 import styled from "styled-components/native";
 
-import SearchIcon from "@assets/icons8-search-24.png";
+import SearchIcon from "@seg-estetica/assets/icons8-search-24.png";
 
-import { useFetch } from "@hooks";
-import { EstablishmentCard } from "@components";
+import { useFetch } from "@seg-estetica/hooks";
+import { EstablishmentCard } from "@seg-estetica/components";
 
 import {
   SearchButton,
@@ -24,7 +24,7 @@ export const Search = () => {
   const establishments = useFetch("establishments");
   const [searchTermState, setSearchTermState] = useState("");
   const [establishmentCards, setEstablishmentCards] = useState([]);
-  
+
   useEffect(() => {
     if (!Array.isArray(establishments)) {
       return;
@@ -58,12 +58,12 @@ export const Search = () => {
             value={searchTermState}
             onChangeText={(value) => setSearchTermState(value)}
           />
-          <SearchButton onPress={() => {}}>
+          <SearchButton onPress={() => { }}>
             <StyledImage source={SearchIcon} />
           </SearchButton>
         </HeaderArea>
 
-        {establishmentCards}    
+        {establishmentCards}
       </Scroller>
     </Container>
   );
