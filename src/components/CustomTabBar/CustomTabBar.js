@@ -1,4 +1,6 @@
 import React from "react";
+import { Image, StyleSheet } from 'react-native';
+
 import styled from "styled-components";
 
 import HomeIcon from '@seg-estetica/assets/icons8-home-24.png';
@@ -6,6 +8,10 @@ import SearchIcon from '@seg-estetica/assets/icons8-search-24.png';
 import TodayIcon from '@seg-estetica/assets/icons8-today-48.png';
 import FavoriteIcon from '@seg-estetica/assets/icons8-favorite-24.png';
 import AccountIcon from '@seg-estetica/assets/icons8-account-30.png';
+
+const StyledImage = (props) => {
+    return <Image {...props} style={styles.styledImage} />;
+};
 
 const TabArea = styled.View`
     height: 60px;
@@ -17,11 +23,6 @@ const TabItem = styled.TouchableOpacity`
     flex: 1;
     justify-content: center;
     align-items: center;
-`;
-
-const StyledImage = styled.Image`
-  width: 24;
-  height: 24;
 `;
 
 const TabItemCenter = styled.TouchableOpacity`
@@ -60,3 +61,10 @@ export const CustomTabBar = ({ navigation }) => {
         </TabArea>
     );
 };
+
+const styles = StyleSheet.create({
+    styledImage: {
+        width: 24,
+        height: 24,
+    }
+});

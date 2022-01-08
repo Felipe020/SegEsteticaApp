@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import { Image, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { useFetch } from '@seg-estetica/hooks';
@@ -12,18 +12,13 @@ import {
   HeaderArea,
   HeaderTitle,
   SearchButton,
-  LocationArea,
-  LocationInput,
-  LocationFinder,
 } from "./styles";
 
 import SearchIcon from "@seg-estetica/assets/icons8-search-24.png";
-import MyLocationIcon from "@seg-estetica/assets/icons8-my-location-24.png";
 
-const StyledImage = styled.Image`
-  width: 24;
-  height: 24;
-`;
+const StyledImage = (props) => {
+  return <Image {...props} style={styles.styledImage} />;
+};
 
 export const Feed = () => {
   const navigation = useNavigation();
@@ -36,7 +31,6 @@ export const Feed = () => {
   return (
     <Container>
       <Scroller>
-
         <HeaderArea>
           <HeaderTitle numberOfLines={2} margin-top="40">
             Encontre seu lugar de beleza favorito
@@ -45,19 +39,6 @@ export const Feed = () => {
             <StyledImage source={SearchIcon} />
           </SearchButton>
         </HeaderArea>
-
-        {/* <LocationArea>
-          <LocationInput 
-            placeholder="Qual a sua cidade?"
-            placeholderTextoColor="#955e25"
-            value={locationText}
-            onchangeText={t=>setLocationText(t)}
-          />
-          <LocationFinder>
-            <StyledImage source={MyLocationIcon}/>
-          </LocationFinder>
-        </LocationArea> */}
-
         {Array.isArray(establishments) ? establishments.map((item, index) => (
           <EstablishmentCard establishment={item} key={index} />
         )) : []}
@@ -66,3 +47,10 @@ export const Feed = () => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  styledImage: {
+    width: 24,
+    height: 24,
+  }
+});
