@@ -4,7 +4,6 @@ import {
   EstablishmentContainer,
   EstablishmentEmail,
   EstablishmentTitle,
-  SeeProfileBtn,
 } from "./styles";
 
 export const EstablishmentCard = ({ establishment }) => {
