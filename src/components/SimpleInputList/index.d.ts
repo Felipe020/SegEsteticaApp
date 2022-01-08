@@ -1,9 +1,6 @@
 import React from "react";
 
-export type PickerOption = {
-	label: String,
-	value: String
-};
+import { PickerOption } from "@seg-estetica/data";
 
 export type FieldData = {
 	name: String,
@@ -12,12 +9,8 @@ export type FieldData = {
 	options?: Array<PickerOption>
 };
 
-export type FieldDataArray = Array<FieldData>;
-
-export type SimpleInputListProps = {
+export const SimpleInputList: React.FC<{
 	formState: Object,
 	setPropOfState: Function,
-	fields: FieldDataArray
-};
-
-export const SimpleInputList: React.FC<SimpleInputListProps>;
+	fields: FieldData[]
+}>;
