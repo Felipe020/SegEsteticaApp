@@ -35,8 +35,7 @@ const TabItemCenter = styled.TouchableOpacity`
     margin-top: -20px;
 `;
 
-export const CustomTabBar = ({ state, navigation }) => {
-
+export const CustomTabBar = ({ navigation }) => {
     const goTo = (screenName) => {
         navigation.navigate(screenName);
     };
