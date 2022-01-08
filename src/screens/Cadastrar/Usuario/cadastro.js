@@ -5,6 +5,7 @@ import {
 } from '@seg-estetica/components';
 
 import {
+  useCheckBoxData,
   useFetch,
   useFormState,
   usePickerData,
@@ -18,10 +19,21 @@ import {
   ScreenIcon,
   Scroller,
 } from './styles';
+import { SimpleCheckboxListInput } from '@seg-estetica/components';
 
 
 export const CadastroUsuario = ({ navigation }) => {
   const [loginFormState, setPropOfLoginFormState, canSignUp] = useFormState({});
+
+  const options = [
+    { nome: 'teste', etiqueta: 'Teste' },
+    { nome: 'teste2', etiqueta: 'Teste 2' },
+  ];
+
+  const [checkBoxOptions, setCheckBoxOptions] = useCheckBoxData(options, {
+    labelAlias: 'etiqueta',
+    nameAlias: 'nome',
+  });
 
   const states = useFetch('states');
   const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
@@ -36,6 +48,11 @@ export const CadastroUsuario = ({ navigation }) => {
     <Container>
       <Scroller>
         <ScreenIcon source={CorteDeCabeloPng} />
+
+        <SimpleCheckboxListInput
+          options={checkBoxOptions}
+          setOptions={setCheckBoxOptions}
+        />
 
         <SimpleInputList
           formState={loginFormState}
