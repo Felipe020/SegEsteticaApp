@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const defaultCanSendAnalyzer = (canOrNot, attribute) => {
+const defaultCanSendAnalyzer = (formState) => (canOrNot, attribute) => {
   if (canOrNot) {
     return !!attribute;
   }
@@ -23,7 +23,7 @@ export const useFormState = (initialData = {}, canSendAnalyzer = defaultCanSendA
   useEffect(() => {
     const formStateHasData = Object.values(formState).length > 0;
 
-    const newCanSend = formStateHasData ? Object.values(formState).reduce(canSendAnalyzer, true) : false;
+    const newCanSend = formStateHasData ? Object.values(formState).reduce(canSendAnalyzer(formState), true) : false;
 
     setCanSend(newCanSend);
   }, [formState]);
