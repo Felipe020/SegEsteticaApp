@@ -6,17 +6,31 @@ export const Container = styled.View`
     background-color: #2E2E2E;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 30px;
 `;
 
 export const SearchButton = styled.TouchableOpacity`
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
 `;
 
 export const SearchInput = styled.TextInput`
     background-color: #343434;
-    border-radius: 25px;
     font-size: 20px;
-    padding: 20px;
+    padding: 10px;
     color: #fff;
+    width: 325px;
+    height: 50px;
+    border-radius: 20px;
+`;
+
+export const Scroller = styled.ScrollView`
+    flex: 1;
+    padding: 20px;
+`;
+
+export const HeaderArea = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;

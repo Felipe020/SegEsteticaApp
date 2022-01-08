@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { SimpleInputList } from '@seg-estetica/components';
+import {
+  SimpleInputList,
+} from '@seg-estetica/components';
 
 import {
   useFetch,
   useFormState,
   usePickerData,
 } from '@seg-estetica/hooks';
+
+import CorteDeCabeloPng from '@seg-estetica/assets/CorteDeCabelo.png';
 
 import {
   Container,
@@ -15,10 +19,9 @@ import {
   Scroller,
 } from './styles';
 
-import CorteDeCabeloPng from '@seg-estetica/assets/CorteDeCabelo.png';
 
 export const CadastroUsuario = ({ navigation }) => {
-  const [loginFormState, setPropOfLoginFormState] = useFormState();
+  const [loginFormState, setPropOfLoginFormState, canSignUp] = useFormState({});
 
   const states = useFetch('states');
   const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
@@ -63,7 +66,6 @@ export const CadastroUsuario = ({ navigation }) => {
               options: neighborhoodOptions
             },
           ]}
-
         />
 
         <RegisterButton

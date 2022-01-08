@@ -23,9 +23,6 @@ const StyledImage = (props) => {
 export const Feed = () => {
   const navigation = useNavigation();
 
-  const [locationText, setLocationText] = useState("");
-  const [list, setList] = useState([]);
-
   const establishments = useFetch('establishments');
 
   return (
@@ -39,10 +36,10 @@ export const Feed = () => {
             <StyledImage source={SearchIcon} />
           </SearchButton>
         </HeaderArea>
+
         {Array.isArray(establishments) ? establishments.map((item, index) => (
           <EstablishmentCard establishment={item} key={index} />
         )) : []}
-
       </Scroller>
     </Container>
   );

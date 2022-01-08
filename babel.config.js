@@ -22,6 +22,7 @@ module.exports = function (api) {
             "@seg-estetica/screens": './src/screens',
             "@seg-estetica/stacks": './src/stacks',
             "@seg-estetica/types": './src/types',
+            "@seg-estetica/utils": './src/utils',
           },
         }
       ],

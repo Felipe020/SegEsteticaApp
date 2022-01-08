@@ -1,11 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text } from "react-native";
-import { Container } from "./styles";
+import styled from "styled-components/native";
+
+import SearchIcon from "@assets/icons8-search-24.png";
+
+import { useFetch } from "@hooks";
+import { EstablishmentCard } from "@components";
+
+import {
+  SearchButton,
+  SearchInput,
+  Container,
+  Scroller,
+  HeaderArea,
+} from "./styles";
+
+const StyledImage = styled.Image`
+  width: 24px;
+  height: 24px;
+`;
 
 export const Search = () => {
-	return (
-		<Container>
-			<Text> Search </Text>
-		</Container>
-	);
+  const establishments = useFetch("establishments");
+  const [searchTermState, setSearchTermState] = useState("");
+  const [establishmentCards, setEstablishmentCards] = useState([]);
+  
+  useEffect(() => {
+    if (!Array.isArray(establishments)) {
+      return;
+    }
+
+    const filterFunction = ({ name }) => {
+      const preparedSearchTerm = searchTermState.normalize("NFD").toUpperCase();
+      const preparedName = name.normalize("NFD").toUpperCase();
+
+      return preparedName.includes(preparedSearchTerm);
+    };
+
+    const filteredEstablishments = establishments.filter(filterFunction);
+
+    setEstablishmentCards(
+      filteredEstablishments.map((item) => {
+        return (
+          <EstablishmentCard establishment={item} key={item.uuid} />
+        );
+      })
+    );
+  }, [establishments, searchTermState]);
+
+  return (
+    <Container>
+      <Scroller>
+        <HeaderArea>
+          <SearchInput
+            placeholder="Pesquisar"
+            placeholderTextColor="#fff"
+            value={searchTermState}
+            onChangeText={(value) => setSearchTermState(value)}
+          />
+          <SearchButton onPress={() => {}}>
+            <StyledImage source={SearchIcon} />
+          </SearchButton>
+        </HeaderArea>
+
+        {establishmentCards}    
+      </Scroller>
+    </Container>
+  );
 };

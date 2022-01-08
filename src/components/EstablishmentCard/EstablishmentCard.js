@@ -2,15 +2,17 @@ import React from "react";
 
 import {
   EstablishmentContainer,
-  EstablishmentEmail,
+  EstablishmentAddress,
   EstablishmentTitle,
 } from "./styles";
+
+import { addressAdapter } from "@seg-estetica/utils";
 
 export const EstablishmentCard = ({ establishment }) => {
   return (
     <EstablishmentContainer>
       <EstablishmentTitle>{establishment.name}</EstablishmentTitle>
-      <EstablishmentEmail>{establishment.email}</EstablishmentEmail>
+      <EstablishmentAddress>{addressAdapter(establishment.address, establishment.addressNumber)}</EstablishmentAddress>
       {/* //<SeeProfileBtn></SeeProfileBtn> */}
     </EstablishmentContainer>
   );
