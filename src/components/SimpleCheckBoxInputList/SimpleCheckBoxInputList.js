@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { CheckBoxInput } from './styles';
+import { SimpleCheckBoxInput } from '../SimpleCheckBoxInput';
 
-export const SimpleCheckboxListInput = ({
+export const SimpleCheckBoxInputList = ({
 	options = [{
 		value: "any",
 		label: "sample text",
@@ -12,23 +12,13 @@ export const SimpleCheckboxListInput = ({
 	setOptions = (val) => { },
 	enableMultiSelect = false,
 }) => {
-	const changeWithoutMultiSelect = (idx) => {
+	const mark = (idx, canMultiSelect) => {
 		setOptions(options.map((option, index) => {
 			if (index === idx) {
 				return { ...option, value: !option.value };
 			}
 
-			return { ...option, value: false };
-		}));
-	};
-
-	const changeWithMultiSelect = (idx) => {
-		setOptions(options.map((option, index) => {
-			if (index === idx) {
-				return { ...option, value: !option.value };
-			}
-
-			return option;
+			return canMultiSelect ? option : ({ ...option, value: false });
 		}));
 	};
 
@@ -36,13 +26,11 @@ export const SimpleCheckboxListInput = ({
 		<View>
 			{options.map((option, idx) => {
 				return (
-					<CheckBoxInput
+					<SimpleCheckBoxInput
 						key={idx}
 						marked={option.value}
 						text={option.label}
-						onPress={enableMultiSelect ?
-							() => changeWithMultiSelect(idx) :
-							() => changeWithoutMultiSelect(idx)}
+						onPress={() => mark(idx, enableMultiSelect)}
 					/>
 				);
 			})}

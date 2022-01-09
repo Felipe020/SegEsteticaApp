@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
   SimpleInputList,
+  SimpleCheckBoxInputList,
 } from '@seg-estetica/components';
 
 import {
@@ -19,8 +20,6 @@ import {
   ScreenIcon,
   Scroller,
 } from './styles';
-import { SimpleCheckboxListInput } from '@seg-estetica/components';
-
 
 export const CadastroUsuario = ({ navigation }) => {
   const [loginFormState, setPropOfLoginFormState, canSignUp] = useFormState({});
@@ -49,7 +48,7 @@ export const CadastroUsuario = ({ navigation }) => {
       <Scroller>
         <ScreenIcon source={CorteDeCabeloPng} />
 
-        <SimpleCheckboxListInput
+        <SimpleCheckBoxInputList
           options={checkBoxOptions}
           setOptions={setCheckBoxOptions}
         />
