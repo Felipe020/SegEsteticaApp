@@ -1,0 +1,86 @@
+[
+	{
+		"uuid": "d97faa9d-b14f-4f54-a614-4052406fa5cc",
+		"name": "AleatorioBarber",
+		"email": "felipesachetto2004@gmail.com",
+		"photoUrl": null,
+		"streetId": 1,
+		"addressNumber": "55",
+		"created_at": "2021-12-21T22:19:33.000000Z",
+		"updated_at": "2021-12-21T22:20:08.000000Z",
+		"emailConfirmation": "2021-12-21 22:20:08",
+		"address": {
+			"street": {
+				"id": 1,
+				"name": "Dr Ab\u00edlio Cesar Novaes",
+				"postCode": "36774116",
+				"neighborhoodId": 1,
+				"created_at": "2021-12-21T22:11:18.000000Z",
+				"updated_at": "2021-12-21T22:11:18.000000Z"
+			},
+			"neighborhood": {
+				"id": 1,
+				"name": "Haidee",
+				"cityId": 1521,
+				"created_at": "2021-12-21T22:11:18.000000Z",
+				"updated_at": "2021-12-21T22:11:18.000000Z"
+			},
+			"city": {
+				"id": 1521,
+				"name": "Cataguases",
+				"stateId": 11,
+				"created_at": "2021-12-17T17:47:32.000000Z",
+				"updated_at": "2021-12-17T17:47:32.000000Z"
+			},
+			"state": {
+				"id": 11,
+				"name": "Minas Gerais",
+				"abbreviation": "MG",
+				"created_at": "2021-12-17T17:47:32.000000Z",
+				"updated_at": "2021-12-17T17:47:32.000000Z"
+			}
+		}
+	},
+	{
+		"uuid": "d97faa9d-b14f-4f54-a614-4052406fa5ce",
+		"name": "BarbeiroBom",
+		"email": "felipesachetto2004@gmail.com",
+		"photoUrl": null,
+		"streetId": 1,
+		"addressNumber": "55",
+		"created_at": "2021-12-21T22:19:33.000000Z",
+		"updated_at": "2021-12-21T22:20:08.000000Z",
+		"emailConfirmation": "2021-12-21 22:20:08",
+		"address": {
+			"street": {
+				"id": 1,
+				"name": "Dr Ab\u00edlio Cesar Novaes",
+				"postCode": "36774116",
+				"neighborhoodId": 1,
+				"created_at": "2021-12-21T22:11:18.000000Z",
+				"updated_at": "2021-12-21T22:11:18.000000Z"
+			},
+			"neighborhood": {
+				"id": 1,
+				"name": "Haidee",
+				"cityId": 1521,
+				"created_at": "2021-12-21T22:11:18.000000Z",
+				"updated_at": "2021-12-21T22:11:18.000000Z"
+			},
+			"city": {
+				"id": 1521,
+				"name": "Cataguases",
+				"stateId": 11,
+				"created_at": "2021-12-17T17:47:32.000000Z",
+				"updated_at": "2021-12-17T17:47:32.000000Z"
+			},
+			"state": {
+				"id": 11,
+				"name": "Minas Gerais",
+				"abbreviation": "MG",
+				"created_at": "2021-12-17T17:47:32.000000Z",
+				"updated_at": "2021-12-17T17:47:32.000000Z"
+			}
+		}
+	}
+]
