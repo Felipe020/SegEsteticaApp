@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EstablishmentContainer = styled.View`
     margin-top: 20px;
     background-color: #343434;
-    height: 60px;
+    height: 120px;
     border-radius: 30px;
     flex-direction: column;
     align-items: center;

@@ -14,8 +14,9 @@ export const useFetch = async (url: string, options: FetchOptions): Promise<Obje
 
 export const useFormState = (initialData: Object, formValidator: (formState: Object) => (canOrNot: Bool, attribute: any) => Bool): [
 	formState: Object,
-	setPropOfState: Function,
-	validated: Bool
+	setPropOfState: (propName: string, propValue: any) => void,
+	validated: Bool,
+	setFormState: (value: any) => void
 ] => { };
 
 export const usePickerData = (data: Object[], mold: {

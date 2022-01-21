@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   SimpleInputList,
@@ -21,18 +21,43 @@ import {
   Scroller,
 } from './styles';
 
+import {
+  UserCreationData
+} from '@seg-estetica/mocks';
+import { Alert } from 'react-native';
+import { consultarCep } from './viacep';
+import { register } from './conexao';
+
 export const CadastroUsuario = ({ navigation }) => {
-  const [loginFormState, setPropOfLoginFormState, canSignUp] = useFormState({});
+  const formValidator = (formState) => (errors, currentAttribute) => {
+    if (formState.userPassword !== formState.userPasswordConfirmation) {
+      return [...errors, 'Senhas não coincidem!'];
+    }
 
-  const options = [
-    { nome: 'teste', etiqueta: 'Teste' },
-    { nome: 'teste2', etiqueta: 'Teste 2' },
-  ];
+    return errors;
+  };
 
-  const [checkBoxOptions, setCheckBoxOptions] = useCheckBoxData(options, {
-    labelAlias: 'etiqueta',
-    nameAlias: 'nome',
-  });
+  const [aguardandoPromessa, setAguardandoPromessa] = useState(false);
+  const [loginFormState, setPropOfLoginFormState, errors, setFormState] = useFormState({
+    'userName': 'Ayres',
+    'userLastName': 'Monteiro',
+    'userEmail': 'ayresmonteiro52@gmail.com',
+    'userPassword': '1234',
+    'userPasswordConfirmation': '1234',
+    'userPhoneNumber': '32988452820',
+    'userStateId': 11,
+    'userCityId': 1794,
+  }, formValidator);
+
+  // const [initialOptions] = useState([
+  //   { nome: 'teste', etiqueta: 'Teste' },
+  //   { nome: 'teste2', etiqueta: 'Teste 2' },
+  // ]);
+
+  // const [checkBoxOptions, setCheckBoxOptions] = useCheckBoxData(initialOptions, {
+  //   labelAlias: 'etiqueta',
+  //   nameAlias: 'nome',
+  // });
 
   const states = useFetch('states');
   const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
@@ -43,15 +68,46 @@ export const CadastroUsuario = ({ navigation }) => {
   const neighborhoods = useFetch('neighborhoods?neighborhoodCityId=' + loginFormState?.userCityId || 0);
   const neighborhoodOptions = usePickerData(neighborhoods, { labelAlias: 'name', valueAlias: 'id' });
 
+  const voltar = () => {
+    navigation.goBack();
+  };
+
+  const registrar = () => {
+    if (Array.isArray(errors) && errors.length > 0) {
+      Alert.alert('Erro de validação!', errors.join('\n'), [
+        { text: "Ok", style: "cancel" }
+      ]);
+    } else {
+      register(loginFormState, voltar);
+    }
+  };
+
+  useEffect(async () => {
+    if (!aguardandoPromessa && loginFormState.postCode) {
+      setAguardandoPromessa(true);
+
+      const dados = await consultarCep(loginFormState.postCode);
+
+      if (dados !== undefined) {
+        setFormState({
+          ...loginFormState,
+          userNeighborhoodName: dados.bairro,
+        });
+      }
+
+      setAguardandoPromessa(false);
+    }
+  }, [loginFormState.postCode]);
+
   return (
     <Container>
       <Scroller>
         <ScreenIcon source={CorteDeCabeloPng} />
 
-        <SimpleCheckBoxInputList
+        {/* <SimpleCheckBoxInputList
           options={checkBoxOptions}
           setOptions={setCheckBoxOptions}
-        />
+        /> */}
 
         <SimpleInputList
           formState={loginFormState}
@@ -60,8 +116,8 @@ export const CadastroUsuario = ({ navigation }) => {
             { name: "userName", label: "Nome" },
             { name: "userLastName", label: "Sobrenome" },
             { name: "userEmail", label: "E-mail" },
-            { name: "userPassword", label: "Senha" },
-            { name: "userPasswordConfirmation", label: "Confirme a Senha" },
+            { name: "userPassword", label: "Senha", isSecure: true },
+            { name: "userPasswordConfirmation", label: "Confirme a Senha", isSecure: true },
             { name: "userPhoneNumber", label: "Número de telefone" },
             {
               name: "userStateId",
@@ -76,15 +132,17 @@ export const CadastroUsuario = ({ navigation }) => {
               options: cityOptions
             },
             {
-              name: "userNeighborhoodId",
-              label: "Selecione um bairro",
-              type: "picker",
-              options: neighborhoodOptions
+              name: 'postCode', label: 'CEP (Ele não será salvo)',
+            },
+            {
+              name: "userNeighborhoodName",
+              label: "Bairro",
             },
           ]}
         />
 
         <RegisterButton
+          onPress={registrar}
           text="Cadastrar"
         />
       </Scroller>

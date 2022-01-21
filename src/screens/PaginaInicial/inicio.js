@@ -27,11 +27,11 @@ export const PaginaInicial = (props) => {
       <SimpleButton
         onPress={cadastro}
         outsideStyle={styles.btnOutside}
-        text="Cadastro de Usuário" />
-      <SimpleButton
+        text="Cadastro" />
+      {/* <SimpleButton
         onPress={cadastroEstabelecimento}
         outsideStyle={styles.btnOutside}
-        text="Cadastro de Estabelecimento" />
+        text="Cadastro de Estabelecimento" /> */}
     </View>
   );
 };

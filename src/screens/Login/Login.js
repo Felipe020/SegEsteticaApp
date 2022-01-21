@@ -7,34 +7,52 @@ import {
   StyleSheet,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SimpleButton } from "@seg-estetica/components";
+import { SimpleButton, SimpleInputList, SimpleTextInput } from "@seg-estetica/components";
+import { useSegEsteticaContext } from "@seg-estetica/contexts";
+
+import { login } from "./conexao";
+import { useFormState } from "@seg-estetica/hooks";
+import { Container, RegisterButton, ScreenIcon } from "./styles";
 
 export const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const { setTokenDoUsuario, setUuidDoUsuario } = useSegEsteticaContext();
+  const [
+    loginFormState,
+    setPropOfLoginFormState,
+  ] = useFormState("");
 
-  const logar = () => { navigation.navigate("Principal"); };
+  const voltar = () => {
+    navigation.navigate('Principal');
+  };
+
+  const salvarCredenciais = (credenciais) => {
+    setTokenDoUsuario(credenciais.token);
+    setUuidDoUsuario(credenciais.uuid);
+  };
+
+  const logar = () => {
+    login(loginFormState, salvarCredenciais, voltar());
+  };
+
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
+      <Container>
+        <ScreenIcon
+          style={styles.icone}
+          source={require("@seg-estetica/assets/UserIcon.png")}
+        />
 
-      <Image
-        style={styles.icone}
-        source={require("@seg-estetica/assets/UserIcon.png")}
-      />
+        <SimpleInputList
+          formState={loginFormState}
+          setPropOfState={setPropOfLoginFormState}
+          fields={[
+            { name: "email", label: "E-mail" },
+            { name: "password", label: "Senha" },
+          ]}
+        />
 
-      <TextInput
-        placeholder="Email"
-        style={styles.textInput}
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        secureTextEntry={true}
-        placeholder="Senha"
-        style={styles.textInput}
-        onChangeText={(text) => setSenha(text)}
-      />
-      <SimpleButton text="Fazer login" onPress={logar} />
+        <RegisterButton text="Fazer login" onPress={logar} />
+      </Container>
     </View>
   );
 };

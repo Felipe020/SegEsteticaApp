@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, View, ScrollView, Alert } from 'react-native';
 
 import { SimpleInputList, SimpleButton } from '@seg-estetica/components';
@@ -7,9 +7,11 @@ import { useFetch, useFormState, usePickerData } from '@seg-estetica/hooks';
 import { styles } from './styles';
 
 import { register } from './conexao';
+import { consultarCep } from './viacep';
 
 export const CadastroEstabelecimento = ({ navigation }) => {
-  const [formData, setPropOfForm, canSend] = useFormState({});
+  const [aguardandoPromessa, setAguardandoPromessa] = useState(false);
+  const [formData, setPropOfForm, errors, setFormState] = useFormState({});
 
   const states = useFetch('states');
   const stateOptions = usePickerData(states, { labelAlias: 'name', valueAlias: 'id' });
@@ -18,11 +20,29 @@ export const CadastroEstabelecimento = ({ navigation }) => {
   const cityOptions = usePickerData(cities, { labelAlias: 'name', valueAlias: 'id' });
 
   const emptyFieldsAlert = () => {
-    Alert.alert("Preencha todos os campos!", "Há campos em branco. Preencha todos para se registrar.", [{
+    Alert.alert("Erro de validação!", errors.join('\n'), [{
       style: 'cancel',
       text: 'Ok!',
     }]);
   };
+
+  useEffect(async () => {
+    if (!aguardandoPromessa && formData.postCode) {
+      setAguardandoPromessa(true);
+
+      const dados = await consultarCep(formData.postCode);
+
+      if (dados !== undefined) {
+        setFormState({
+          ...formData,
+          neighborhoodName: dados.bairro,
+          streetName: dados.logradouro,
+        });
+      }
+
+      setAguardandoPromessa(false);
+    }
+  }, [formData.postCode]);
 
   return (
     <View style={styles.container}>
@@ -46,13 +66,13 @@ export const CadastroEstabelecimento = ({ navigation }) => {
               type: 'picker', options: cityOptions
             },
             {
+              name: 'postCode', label: 'CEP',
+            },
+            {
               name: 'neighborhoodName', label: 'Bairro',
             },
             {
               name: 'streetName', label: 'Rua',
-            },
-            {
-              name: 'postCode', label: 'CEP',
             },
             { name: 'establishmentAddressNumber', label: 'Número do Endereço' },
             { name: 'establishmentPassword', label: 'Senha', isSecure: true },
@@ -60,7 +80,7 @@ export const CadastroEstabelecimento = ({ navigation }) => {
         />
 
         <View style={styles.registerBtn}>
-          <SimpleButton onPress={() => canSend ? register(formData) : emptyFieldsAlert()} text="Cadastrar Estabelecimento" />
+          <SimpleButton onPress={() => !!errors ? register(formData) : emptyFieldsAlert()} text="Cadastrar Estabelecimento" />
         </View>
       </ScrollView>
     </View>

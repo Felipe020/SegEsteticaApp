@@ -6,9 +6,11 @@ export const SegEsteticaGlobalContext = ({ children }) => {
   // Convenção: null serve pra dizer que não tem token
 
   const [token, setToken] = useState(null);
+  const [uuidUsuario, setUuidUsuario] = useState(null);
 
   const data = {
     tokenDoUsuario: token, setTokenDoUsuario: setToken,
+    uuidDoUsuario: uuidUsuario, setUuidDoUsuario: setUuidUsuario,
   };
 
   return (
@@ -21,9 +23,17 @@ export const SegEsteticaGlobalContext = ({ children }) => {
 export const useSegEsteticaContext = () => {
   const context = useContext(segEsteticaGlobalContext);
 
-  const { tokenDoUsuario, setTokenDoUsuario } = context;
+  const {
+    tokenDoUsuario,
+    setTokenDoUsuario,
+    uuidDoUsuario,
+    setUuidDoUsuario,
+  } = context;
 
   return {
-    tokenDoUsuario, setTokenDoUsuario
+    tokenDoUsuario,
+    setTokenDoUsuario,
+    uuidDoUsuario,
+    setUuidDoUsuario,
   };
 };
