@@ -38,6 +38,10 @@ export const register = async (data) => {
 
     jsonResponse = await response.json();
 
+    if (response.status >= 400) {
+      throw new Error();
+    }
+
     Alert.alert("Cadastro efetuado com sucesso!", JSON.stringify(jsonResponse), [
       { text: "Ok", style: "cancel" },
     ]);
