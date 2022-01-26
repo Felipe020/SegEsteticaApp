@@ -54,7 +54,7 @@ export const register = async (data, goBack = () => { }) => {
 
 		jsonResponse = await response.json();
 
-		Alert.alert("Cadastro efetuado com sucesso!", jsonResponse, [
+		Alert.alert("Cadastro efetuado com sucesso!", JSON.stringify(jsonResponse), [
 			{ text: "Ok", style: "cancel" },
 		]);
 
