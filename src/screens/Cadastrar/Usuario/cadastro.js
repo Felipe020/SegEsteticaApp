@@ -38,16 +38,10 @@ export const CadastroUsuario = ({ navigation }) => {
   };
 
   const [aguardandoPromessa, setAguardandoPromessa] = useState(false);
-  const [loginFormState, setPropOfLoginFormState, errors, setFormState] = useFormState({
-    'userName': 'Ayres',
-    'userLastName': 'Monteiro',
-    'userEmail': 'ayresmonteiro52@gmail.com',
-    'userPassword': '1234',
-    'userPasswordConfirmation': '1234',
-    'userPhoneNumber': '32988452820',
-    'userStateId': 11,
-    'userCityId': 1794,
-  }, formValidator);
+  const [loginFormState, setPropOfLoginFormState, errors, setFormState] = useFormState(
+    {},
+    formValidator
+  );
 
   // const [initialOptions] = useState([
   //   { nome: 'teste', etiqueta: 'Teste' },
